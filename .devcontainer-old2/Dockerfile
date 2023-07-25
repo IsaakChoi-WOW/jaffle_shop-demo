@@ -1,5 +1,5 @@
 ## Start with base image of alpine linux with git installed
-FROM mcr.microsoft.com/devcontainers/base:bullseye
+FROM mcr.microsoft.com/devcontainers/base:alpine-3.18
 
 ## Install the xz-utils package
 # RUN apt-get update && apt-get install -y xz-utils
