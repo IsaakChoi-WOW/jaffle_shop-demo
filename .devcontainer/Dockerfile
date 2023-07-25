@@ -31,6 +31,28 @@ RUN apt-get install -y --no-install-recommends \
         python-pip-whl \
         python3-pip
 
+## Install dbt
+RUN pip install   \
+    dbt-core      \
+    dbt-postgres  \
+    dbt-redshift  \
+    dbt-snowflake \
+    dbt-bigquery  \
+    dbt-trino
+
+## Verify expected build and debug tools are present
+RUN apt-get update \
+    && apt-get -y install build-essential cmake cppcheck valgrind clang lldb llvm gdb python3-dev \
+    ## Install tools and shells not in common script
+    && apt-get install -yq vim vim-doc xtail software-properties-common libsecret-1-dev \
+    ## Install additional tools (useful for 'puppeteer' project)
+    && apt-get install -y --no-install-recommends libnss3 libnspr4 libatk-bridge2.0-0 libatk1.0-0 libx11-6 libpangocairo-1.0-0 \
+                                                  libx11-xcb1 libcups2 libxcomposite1 libxdamage1 libxfixes3 libpango-1.0-0 libgbm1 libgtk-3-0 \
+    ## Clean up
+    && apt-get autoremove -y && apt-get clean -y \
+    ## Move first run notice to right spot
+    && mkdir -p "/usr/local/etc/vscode-dev-containers/"
+
 ## Install and setup fish
 RUN apt-get install -yq fish
 RUN FISH_PROMPT="function fish_prompt\n    set_color green\n    echo -n (whoami)\n    set_color normal\n    echo -n \":\"\n    set_color blue\n    echo -n (pwd)\n    set_color normal\n    echo -n \"> \"\nend\n"
