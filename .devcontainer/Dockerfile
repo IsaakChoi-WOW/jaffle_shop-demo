@@ -2,7 +2,7 @@
 FROM mcr.microsoft.com/devcontainers/base:bullseye
 
 ## Install the xz-utils package
-# RUN apt-get update && apt-get install -y xz-utils
+RUN apt-get update && apt-get install -y xz-utils
 
 ## Expose ports
 # EXPOSE is not required for devcontainers. See 'devcontainer.json'
