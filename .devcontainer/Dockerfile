@@ -11,7 +11,7 @@ FROM mcr.microsoft.com/devcontainers/base:bullseye
 ### Setup ###
 
 ## General
-RUN apt-get update
+RUN apt-get update && apt-get upgrade -y
 RUN export DEBIAN_FRONTEND=noninteractive
 ENV LANG="C.UTF-8"
 
@@ -26,7 +26,6 @@ ENV SHELL=/bin/bash \
 ### Install packages ###
 
 ## Install basic
-RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y --no-install-recommends \
         xz-utils       \
         python-pip-whl \
@@ -41,8 +40,9 @@ RUN printf "if type code-insiders > /dev/null 2>&1; and not type code > /dev/nul
 
 ### Other cleanup ###
 
+## Clean some stuff? and update all packages to latest version
 # RUN rm -rf /var/lib/apt/lists/*
-RUN apt-get update && apt-get upgrade -y
+# RUN apt-get update && apt-get upgrade -y
 # RUN rm -rf /var/lib/apt/lists/*
 
 ## Remove scripts now that we're done with them
