@@ -85,6 +85,6 @@ FROM ubuntu:focal
 # VOLUME [ "/var/lib/docker" ]
 
 ## Run
-ENTRYPOINT [ "/usr/local/share/docker-init.sh", "/usr/local/share/ssh-init.sh"]
-CMD [ "sleep", "infinity" ]
+# ENTRYPOINT [ "/usr/local/share/docker-init.sh", "/usr/local/share/ssh-init.sh"]
+# CMD [ "sleep", "infinity" ]
 

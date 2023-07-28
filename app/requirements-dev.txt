@@ -1,0 +1,2 @@
+data-diff[dbt]==0.7.13
+dbt-coverage==0.3.4
